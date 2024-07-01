@@ -25,47 +25,47 @@ enum AppRoute {
   );
 }
 
-final appRouterConfig = GoRouter(
-  initialLocation: AppRoute.root.routePath,
-  routes: [
-    GoRoute(
-      path: AppRoute.root.routePath,
-      redirect: (context, state) {
-        return AppRoute.login.routePath;
-      },
-    ),
-    GoRoute(
-      path: AppRoute.login.routePath,
-      builder: (context, state) {
-        return BlocProvider.value(
-          value: locator<LoginBloc>(),
-          child: LoginPage(),
-        );
-      },
-    ),
-    GoRoute(
-      path: AppRoute.postLogin.routePath,
-      redirect: (context, state) {
-        return AppRoute.home.routePath;
-      },
-    ),
-    GoRoute(
-      path: AppRoute.register.routePath,
-      builder: (context, state) {
-        return BlocProvider.value(
-          value: locator<RegisterBloc>(),
-          child: RegisterPage(),
-        );
-      },
-    ),
-    GoRoute(
-      path: AppRoute.home.routePath,
-      builder: (context, state) {
-        return const HomePage();
-      },
-    ),
-  ],
-);
+GoRouter get appRouterConfig => GoRouter(
+      initialLocation: AppRoute.root.routePath,
+      routes: [
+        GoRoute(
+          path: AppRoute.root.routePath,
+          redirect: (context, state) {
+            return AppRoute.login.routePath;
+          },
+        ),
+        GoRoute(
+          path: AppRoute.login.routePath,
+          builder: (context, state) {
+            return BlocProvider.value(
+              value: locator<LoginBloc>(),
+              child: LoginPage(),
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoute.postLogin.routePath,
+          redirect: (context, state) {
+            return AppRoute.home.routePath;
+          },
+        ),
+        GoRoute(
+          path: AppRoute.register.routePath,
+          builder: (context, state) {
+            return BlocProvider.value(
+              value: locator<RegisterBloc>(),
+              child: RegisterPage(),
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoute.home.routePath,
+          builder: (context, state) {
+            return const HomePage();
+          },
+        ),
+      ],
+    );
 
 extension RouterNavigation on BuildContext {
   void goAppRoute(AppRoute route) {

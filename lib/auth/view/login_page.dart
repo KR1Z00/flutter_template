@@ -147,6 +147,7 @@ class _LoginUserColumnContent extends StatelessWidget {
             ),
           ),
           TextField(
+            key: const Key("loginPage_email"),
             controller: emailTextFieldController,
             autocorrect: false,
             keyboardType: TextInputType.emailAddress,
@@ -156,6 +157,7 @@ class _LoginUserColumnContent extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           ShowHideTextField(
+            key: const Key("loginPage_password"),
             controller: passwordTextFieldController,
             hintText: tr(LocaleKeys.password),
           ),
@@ -163,6 +165,7 @@ class _LoginUserColumnContent extends StatelessWidget {
           SizedBox(
             height: 40,
             child: TextButton(
+              key: const Key("loginPage_login"),
               onPressed: () {
                 FocusManager.instance.primaryFocus?.unfocus();
                 BlocProvider.of<LoginBloc>(context).add(
@@ -180,6 +183,7 @@ class _LoginUserColumnContent extends StatelessWidget {
           SizedBox(
             height: 30,
             child: TextButton(
+              key: const Key("loginPage_register"),
               onPressed: () => context.pushAppRoute(
                 AppRoute.register,
               ),
@@ -190,6 +194,7 @@ class _LoginUserColumnContent extends StatelessWidget {
           SizedBox(
             height: 30,
             child: TextButton(
+              key: const Key("loginPage_forgotPassword"),
               onPressed: () => BlocProvider.of<LoginBloc>(context).add(
                 const LoginForgotPasswordEvent(),
               ),
@@ -229,6 +234,7 @@ class _LoginRecoverPasswordColumnContent extends StatelessWidget {
           ),
           if (!(state as LoginRecoverPasswordState).emailSent)
             TextField(
+              key: const Key("forgotPassword_email"),
               controller: passwordRecoveryEmailTextFieldController,
               autocorrect: false,
               keyboardType: TextInputType.emailAddress,
@@ -254,6 +260,7 @@ class _LoginRecoverPasswordColumnContent extends StatelessWidget {
               child: SizedBox(
                 height: 40,
                 child: TextButton(
+                  key: const Key("forgotPassword_resetPassword"),
                   onPressed: () => BlocProvider.of<LoginBloc>(context).add(
                     LoginRecoverPasswordEvent(
                       email: passwordRecoveryEmailTextFieldController.text,
@@ -269,6 +276,7 @@ class _LoginRecoverPasswordColumnContent extends StatelessWidget {
             child: SizedBox(
               height: 30,
               child: TextButton(
+                key: const Key("forgotPassword_done"),
                 onPressed: () => BlocProvider.of<LoginBloc>(context).add(
                   const LoginForgotPasswordCancelEvent(),
                 ),

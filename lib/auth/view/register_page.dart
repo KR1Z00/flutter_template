@@ -69,6 +69,7 @@ class RegisterPage extends StatelessWidget {
                             ),
                           ),
                           TextField(
+                            key: const Key("registerPage_name"),
                             controller: _nameTextFieldController,
                             decoration: InputDecoration(
                               hintText: tr(LocaleKeys.name),
@@ -76,6 +77,7 @@ class RegisterPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           TextField(
+                            key: const Key("registerPage_email"),
                             controller: _emailTextFieldController,
                             autocorrect: false,
                             keyboardType: TextInputType.emailAddress,
@@ -85,6 +87,7 @@ class RegisterPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           TextField(
+                            key: const Key("registerPage_phoneNumber"),
                             controller: _phoneNumberTextFieldController,
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
@@ -93,6 +96,7 @@ class RegisterPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           ShowHideTextField(
+                            key: const Key("registerPage_password"),
                             controller: _passwordTextFieldController,
                             hintText: tr(LocaleKeys.password),
                           ),
@@ -105,6 +109,7 @@ class RegisterPage extends StatelessWidget {
                           SizedBox(
                             height: 40,
                             child: TextButton(
+                              key: const Key("registerPage_register"),
                               onPressed: () {
                                 FocusManager.instance.primaryFocus?.unfocus();
                                 BlocProvider.of<RegisterBloc>(
@@ -125,6 +130,7 @@ class RegisterPage extends StatelessWidget {
                           SizedBox(
                             height: 30,
                             child: TextButton(
+                              key: const Key("registerPage_login"),
                               onPressed: () => context.pop(),
                               style: ButtonStyles.primaryText(context),
                               child: Text(tr(LocaleKeys.login)),
